@@ -8,7 +8,7 @@ This project includes the following integrations:
 ## Pre-Requisites
 The following Linux packages are required by the programs in this project.
 
-1. **jq**, a JSON processor.  To install, issue the following at your command prompt.
+1. **jq**, a JSON processor for shell.  To install, issue the following at your command prompt.
 ```
 sudo apt-get install jq
 ```
