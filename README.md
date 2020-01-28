@@ -3,18 +3,23 @@ Integrate Tesla car with your home.  The programs in this project are designed t
 
 This project includes the following integrations:
 
-1) Check if the battery range is below the chosen number of miles and the car is not connected to a charger, get notified to charge the car.
+1. If the battery range is below the chosen number of miles and your car is not connected to a charger, get notified to charge the car via email, SMS or Alexa notifications.
 
-# Pre-Requisites
-Setup instructions here
+## Pre-Requisites
+The following Linux packages are required by the programs in this project.
 
-# Installation
+1. jq, a JSON processor.  To install, issue the following at your command prompt.
+```
+sudo apt-get install jq
+```
+
+## Installation
 x
 
-# Configure Parameters
+## Configure Parameters
 
 
-# Troubleshooting Installation
+## Troubleshooting Installation
 
-# Known Limitations
-* Currently works with one Tesla car only.  If there is demand for this feature, I will add it.  Send me a message at pgattu@gmail.com if you need this.
+## Known Limitations
+- Currently works with one Tesla car only.  If there is demand for this feature, I will add it.  Send me a message at pgattu@gmail.com if you need this.
