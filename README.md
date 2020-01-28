@@ -8,25 +8,31 @@ This project includes the following integrations:
 ## Pre-Requisites
 The following Linux packages are required by the programs in this project.
 
-1. Install **jq**, a JSON processor for shell.  Issue the following at your Raspberry Pi command prompt.
+1. Install **jq**, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install jq
 ```
 
-2. Install **python**.  Issue the following at your Raspberry Pi command prompt.
+2. Install **python**.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install python
 ```
 
 ## Installation
-To install and setup the programs, navigate to a directory where you want to install the programs.  Perform the following:
+To install and setup the program, navigate to a directory where you want to install it and do the following:
 
 ```
+# clone the code from github
 git clone https://github.com/pgattu/TeslaIntegration.git
+
+# navigate to the newly-created directory
 cd TeslaIntegration
+
+# Change permissions to make the shell scripts executable
 chmod +x *.sh
-mkdir logs
-mkdir tesla_json
+
+# Create the directories used by the programs
+mkdir logs tesla_json
 
 ```
 
