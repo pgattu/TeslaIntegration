@@ -1,2 +1,5 @@
 # Files to be ignored in git push
 *.code-workspace
+*.ini
+logs/*
+tesla_json/*
