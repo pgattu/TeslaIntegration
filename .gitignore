@@ -1,3 +1,2 @@
 # Files to be ignored in git push
-desktop.ini
 *.code-workspace
