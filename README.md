@@ -89,7 +89,7 @@ To upgrade to the latest version, navigate to the directory where you originally
 
 ```
 cd /path/to/TeslaIntegration
-git fetch -all
+git fetch --all
 git reset --hard origin/master
 ```
 
