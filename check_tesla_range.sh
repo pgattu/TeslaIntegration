@@ -30,21 +30,15 @@ TESLA_USER="tesla_login@gmail.com"
 # Login password for your tesla.com account
 TESLA_PSWD="tesla_pswd"
 
-# Login username for the ISY
-ISY_USER="isy_user"
-
-# Login password for the ISY
-ISY_PSWD="isy_pswd"
-
-# Location for log files.  It must be write permissions.
-LOG_DIR=~pi/scripts/logs
-
-# Location for json files.  It must be read/write permissions.
-JSON_DIR=~pi/scripts/tesla_json
+# Location of the directory where the script is stored
+SCRIPT_DIR="/path/to/script"
 
 
 # Variables (DO NOT EDIT BELOW THIS LINE)
-LOG_FILE=${LOG_DIR}/chk_tesla_range_$(date +%Y-%m-%d).log
+#
+JSON_DIR=${SCRIPT_DIR}/tesla_json
+LOG_DIR=${SCRIPT_DIR}/logs
+LOG_FILE=${LOG_DIR}/tesla_range_$(date +%Y-%m-%d).log
 TESLA_HOST="https://owner-api.teslamotors.com"
 LOGIN_REQUEST='{ "grant_type": "password",
   "client_id": "81527cff06843c8634fdc09e8ac0abefb46ac849f38fe1e431c2ef2106796384",
@@ -147,6 +141,26 @@ function login() {
 #
 log "==== Check Tesla Range ====\n"
 
+
+# Check whether jq exists
+
+
+# Check whether python exists
+
+
+# Check whether the log directory exist.  If not, create it.
+if [ ! -d ${LOG_DIR} ]; then
+  mkdir ${LOG_DIR}
+  log "Created log directory.\n"
+fi
+
+# Check whether the json directory exist.  If not, create it.
+if [ ! -d ${JSON_DIR} ]; then
+  mkdir ${JSON_DIR}
+  log "Created json directory.\n"
+fi
+
+
 # get the access_token
 #
 log "Checking access_token in file..."
@@ -156,7 +170,7 @@ if [ -e "${JSON_DIR}/login.out" ]; then
 
   log "Retrived access_token from file.\n"
 
-  if [ ${CURRENT_DATE} -ge ${EXPIRY_DATE} ]; then
+  if [ $CURRENT_DATE -ge ${EXPIRY_DATE} ]; then
     # login since the access_token has expired
     log "The access token has expired. A new access token is required."
     login
@@ -247,15 +261,19 @@ Tesla needs charging.  Battery range is ${BATTERY_RANGE} miles. Charger is not c
 Battery range threshold is set to ${BATTERY_THRESHOLD} miles.
 _EOF
 
+  # The following snippet of code is commented out.  It only applies to users
+  # with a ISY home automation hub.
+  #
   # Set Tesla_needs_charging variable to 1, so that Alexa can announce at home.
   #
   # In the below API, 2 is for state variables, 8 is the ID for the variable
   # named "Tesla_Needs_Charging", and 1 represents the value we want to set
-  # the variable to.
+  # the variable to. An Alexa routine must be setup to read the variable and
+  # make an announcement to charge the car.
   #
-  ISY_RESPONSE=`curl --silent --location --user ${ISY_USER}:${ISY_PSWD} \
-    http://192.168.1.232/rest/vars/set/2/8/1`
-  write_to_file "${ISY_RESPONSE}" "${JSON_DIR}/isy.out" "xml"
+  # ISY_RESPONSE=`curl --silent --location --user ${ISY_USER}:${ISY_PSWD} \
+  #  http://${ISY_HOSTNAME}/rest/vars/set/2/8/1`
+  # write_to_file "${ISY_RESPONSE}" "${JSON_DIR}/isy.out" "xml"
 
 else
   log "Battery range is ${BATTERY_RANGE} miles. Battery range threshold is ${BATTERY_THRESHOLD} miles. No need to charge.\n"

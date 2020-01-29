@@ -60,10 +60,29 @@ BATTERY_THRESHOLD="50"
 EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 ```
 
-- **
+- **EMAIL_FROM**: The from address shown on the email notifications.  Syntax is `Name <me@email.com>`
+
+- **TESLA_USER**: Login email for your tesla.com account
+
+- **TESLA_PSWD**: Clear-text password for your tesla.com account
+
+- **SCRIPT_DIR**: Fully qualified path to the location of the script. For example:
+
+```
+SCRIPT_DIR="/home/pi/TeslaIntegration"
+```
 
 ## Schedule the Job
+Schedule the job using cron to check for the battery range.  I recommend checking no more than a few times a day. I scheduled my checks to run twice a day.  Every time you check for battery range, the car is woken up to provide the data and that consumes battery power.
 
+If you have solar panels that power your home's electricity, it's a good idea to charge your car during the day when solar power is available.
+
+To add a cronjob, launch the crontab by typing `crontab -e` at the command prompt. To schedule the job to run at 9 am every day, add the following entry at the bottom of your file.  Save and close the crontab.
+
+```
+# Check whether Tesla needs to be charged every day at 9 am
+0 9 * * * /path/to/script/check_tesla_range.sh
+```
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
