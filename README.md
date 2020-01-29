@@ -10,7 +10,7 @@ You need a computer with Linux OS that's always on, such as a Raspberry Pi.
 
 The following Linux packages are required by this project.
 
-1. Install [**jq**](https://stedolan.github.io/jq){:target="_blank"}, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
+1. Install [jq](https://stedolan.github.io/jq){:target="_blank" rel="noopener"}, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install jq
 ```
