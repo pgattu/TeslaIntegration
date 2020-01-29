@@ -85,9 +85,17 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 To upgrade to the latest version, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
 
 ```
+# Navigate to the TeslaIntegration directory
 cd /path/to/TeslaIntegration
+
+# Backup the settings file
+cp .settings .my_settings
+
+# Download the latest code from github. It will overwrite all the project files.
 git fetch --all
 git reset --hard origin/master
+
+# Change permissions to make the shell scripts executable
 chmod +x *.sh
 ```
 
