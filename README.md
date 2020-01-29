@@ -1,12 +1,12 @@
 # TeslaIntegration
-Integrate Tesla car with your home.  The programs in this project are designed to run in a Bash shell environment on a Raspberry Pi.  In theory, they should run on any Linux OS or Mac OS, but I have not tested them.
+Integrate Tesla car with your home.  The programs in this project are designed to run in a Bash shell environment on a Raspberry Pi.  In theory, they should run on any Linux OS or Mac OS X, but I have not tested them.
 
 This project includes the following integrations:
 
 1. If the battery range is below the chosen number of miles and your car is not connected to a charger, get notified to charge the car via email, SMS or Alexa notifications.
 
 ## Pre-Requisites
-You need a Linux-based computer that's always on, like a Raspberry Pi.
+You need a computer with Linux OS that's always on, such as a Raspberry Pi.
 
 The following Linux packages are required by this project.
 
@@ -38,11 +38,18 @@ mkdir logs tesla_json
 
 ```
 
+Your installation is complete.  You need to configure parameters before using the program.
+
 ## Configure Parameters
+Edit the file `check_tesla_range.sh` using your preferred text editor.
+
+- 
 
 
-## Troubleshooting Installation
+## Schedule the Job
+
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for this feature, I will add it.  Send me a message at pgattu@gmail.com if you need this.
-- I believe that the programs would work in a Mac OS terminal. I have not tested it though. If anyone of you test it, please report findings to me at pgattu@gmail.com.
+- I believe that the programs would work in a Mac OS X terminal. I have not tested it though. If anyone of you test it, please report findings to me at pgattu@gmail.com.
+- Login information is not stored in an encrypted form yet.  However, the script is on your personal computer and you should have a firewall preventing hackers from getting into your computer. Note that all communications between the program and Tesla servers are secured by HTTPS protocol.
