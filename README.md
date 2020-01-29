@@ -15,7 +15,7 @@ The following Linux packages are required by this project.
 sudo apt-get install jq
 ```
 
-***Note for Mac users****: You have to install HomeBrew first, and then install jq.*
+***Note for Mac users*** *: You have to install HomeBrew first, and then install jq.*
 
 2. Install **python**.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
