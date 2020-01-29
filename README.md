@@ -38,9 +38,6 @@ cd TeslaIntegration
 # Change permissions to make the shell scripts executable
 chmod +x *.sh
 
-# Create the directories used by the programs
-mkdir logs tesla_json
-
 ```
 
 Your installation is complete.  You need to configure parameters before using the program.
@@ -91,6 +88,7 @@ To upgrade to the latest version, navigate to the directory where you originally
 cd /path/to/TeslaIntegration
 git fetch --all
 git reset --hard origin/master
+chmod +x *.sh
 ```
 
 ***Note*** *: The above commands will overwrite all your files.  That means, you have to [configure parameters](https://github.com/pgattu/TeslaIntegration#configure-parameters) again.*
