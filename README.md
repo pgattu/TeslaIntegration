@@ -15,10 +15,14 @@ The following Linux packages are required by this project.
 sudo apt-get install jq
 ```
 
+**-Mac Note-**-: If you are using a Mac, install brew first and then install jq.-
+
 2. Install **python**.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install python
 ```
+
+3. Your computer must be setup to send mail to any email address if you want to receive email notifications.
 
 ## Installation
 To install and setup the program, navigate to a directory where you want to install it and do the following:
@@ -43,14 +47,22 @@ Your installation is complete.  You need to configure parameters before using th
 ## Configure Parameters
 Edit the file `check_tesla_range.sh` using your preferred text editor.
 
-- **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified.
+- **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger:
 
-- (to be completed)
+```
+BATTERY_THRESHOLD="50"
+```
+
+- **EMAIL_RECIPIENTS**: 
 
 ## Schedule the Job
 
 
 ## Known Limitations
-- Currently works with one Tesla car only.  If there is demand for this feature, I will add it.  Send me a message at pgattu@gmail.com if you need this.
+- Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
 - I believe that the programs would work in a Mac OS X terminal. I have not tested it though. If anyone of you test it, please report findings to me at pgattu@gmail.com.
 - Login information is not stored in an encrypted form yet.  However, the script is on your personal computer and you should have a firewall preventing hackers from getting into your computer. Note that all communications between the program and Tesla servers are secured by HTTPS protocol.
+
+
+## TO DO
+- Include link to instructions for setting up email.
