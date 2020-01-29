@@ -15,7 +15,7 @@
 #
 
 # The battery range (in miles), below which you want to be notified
-BATTERY_THRESHOLD="90"
+BATTERY_THRESHOLD=90
 
 # Email receipients for the email notification.  Separate multiple recipients
 # using a comma.
@@ -25,13 +25,13 @@ EMAIL_RECIPIENTS="your_email_1@gmail.com, your_email_2@gmail.com"
 EMAIL_FROM="Your Tesla<your_email@gmail.com>"
 
 # Login email for your tesla.com account
-TESLA_USER="tesla_login@gmail.com"
+TESLA_USER=tesla_login@gmail.com
 
 # Login password for your tesla.com account
-TESLA_PSWD="tesla_pswd"
+TESLA_PSWD=tesla_pswd
 
 # Location of the directory where the script is stored
-SCRIPT_DIR="/path/to/script"
+SCRIPT_DIR=/path/to/TeslaIntegration
 
 
 # Variables (DO NOT EDIT BELOW THIS LINE)
@@ -139,15 +139,6 @@ function login() {
 
 # End of functions.  Let's execute.
 #
-log "==== Check Tesla Range ====\n"
-
-
-# Check whether jq exists
-
-
-# Check whether python exists
-
-
 # Check whether the log directory exist.  If not, create it.
 if [ ! -d ${LOG_DIR} ]; then
   mkdir ${LOG_DIR}
@@ -159,6 +150,15 @@ if [ ! -d ${JSON_DIR} ]; then
   mkdir ${JSON_DIR}
   log "Created json directory.\n"
 fi
+
+
+log "==== Check Tesla Range ====\n"
+
+
+# Check whether jq exists
+
+
+# Check whether python exists
 
 
 # get the access_token
