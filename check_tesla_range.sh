@@ -11,30 +11,11 @@
 #                 (sudo apt-get install jq python)
 ################################################################################
 
-# Setup parameters (EDIT THESE)
+# Load parameters from the settings file
 #
+. .settings
 
-# The battery range (in miles), below which you want to be notified
-BATTERY_THRESHOLD=90
-
-# Email receipients for the email notification.  Separate multiple recipients
-# using a comma.
-EMAIL_RECIPIENTS="your_email_1@gmail.com, your_email_2@gmail.com"
-
-# The FROM address for the email notifications.
-EMAIL_FROM="Your Tesla<your_email@gmail.com>"
-
-# Login email for your tesla.com account
-TESLA_USER=tesla_login@gmail.com
-
-# Login password for your tesla.com account
-TESLA_PSWD=tesla_pswd
-
-# Location of the directory where the script is stored
-SCRIPT_DIR=/path/to/TeslaIntegration
-
-
-# Variables (DO NOT EDIT BELOW THIS LINE)
+# Variables
 #
 JSON_DIR=${SCRIPT_DIR}/tesla_json
 LOG_DIR=${SCRIPT_DIR}/logs
@@ -46,6 +27,9 @@ LOGIN_REQUEST='{ "grant_type": "password",
   "email": "'${TESLA_USER}'",
   "password": "'${TESLA_PSWD}'" }'
 
+################################################################################
+# Reusable functions...
+################################################################################
 
 # Function: log
 # Input parameters: message [required]
@@ -136,16 +120,17 @@ function login() {
 
 } # end function: login
 
+################################################################################
+# End of functions.
+################################################################################
 
-# End of functions.  Let's execute.
-#
-# Check whether the log directory exist.  If not, create it.
+# Check whether the log directory exists.  If not, create it.
 if [ ! -d ${LOG_DIR} ]; then
   mkdir ${LOG_DIR}
   log "Created log directory.\n"
 fi
 
-# Check whether the json directory exist.  If not, create it.
+# Check whether the json directory exists.  If not, create it.
 if [ ! -d ${JSON_DIR} ]; then
   mkdir ${JSON_DIR}
   log "Created json directory.\n"

@@ -63,7 +63,7 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 
 - **TESLA_PSWD**: Password for your tesla.com account.  Password is saved on your computer within your network.  Communications between your computer and tesla.com are secured by HTTPS.
 
-- **SCRIPT_DIR**: Fully qualified path to the location of the script. For example:
+- **SCRIPT_DIR**: Full path to the location of the TelsaIntegration folder. For example:
 
 ```
 SCRIPT_DIR="/home/pi/TeslaIntegration"
@@ -78,7 +78,7 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 
 ```
 # Check whether Tesla needs to be charged every day at 9 am
-0 9 * * * /path/to/check_tesla_range.sh
+0 9 * * * /path/to/TeslaIntegration/check_tesla_range.sh
 ```
 
 ## Upgrading
