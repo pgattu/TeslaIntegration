@@ -220,6 +220,8 @@ BATTERY_RANGE=$(get_json_value "response.battery_range" "${JSON_DIR}/charge.out"
 # convert battery range from float (decimal number) to integer
 BATTERY_RANGE=${BATTERY_RANGE%.*}
 CHARGING_STATE=$(get_json_value "response.charging_state" "${JSON_DIR}/charge.out")
+
+log "Battery Range Threshold: ${BATTERY_THRESHOLD} miles"
 log "Battery Range: ${BATTERY_RANGE} miles"
 log "Charging State: ${CHARGING_STATE}\n"
 
@@ -237,13 +239,13 @@ fi
 if [ "${BATTERY_RANGE}" -lt "${BATTERY_THRESHOLD}" -a \
      "${CHARGING_STATE}" == "Disconnected" ]
 then
-  log "Battery range (${BATTERY_RANGE} miles) is lower than the threshold (${BATTERY_THRESHOLD} miles). The car is not connected to a charger. Tesla needs charging.\n" >> $LOG_FILE
+  log "Tesla needs to be charged.\n" >> $LOG_FILE
 
   # send an email
-  mail -s "Tesla needs charging" -a"From:${EMAIL_FROM}" ${EMAIL_RECIPIENTS} <<_EOF
-Tesla needs charging.  Battery range is ${BATTERY_RANGE} miles. Charger is not connected.
+  mail -s "Tesla needs to be charged" -a"From:${EMAIL_FROM}" ${EMAIL_RECIPIENTS} <<_EOF
+Tesla needs to be charged.  Battery range is ${BATTERY_RANGE} miles. Charger is not connected.
 
-Battery range threshold is set to ${BATTERY_THRESHOLD} miles.
+(Battery range threshold is set to ${BATTERY_THRESHOLD} miles)
 _EOF
 
   # The following snippet of code is commented out.  It only applies to users
@@ -261,7 +263,7 @@ _EOF
   # write_to_file "${ISY_RESPONSE}" "${JSON_DIR}/isy.out" "xml"
 
 else
-  log "Battery range is ${BATTERY_RANGE} miles. Battery range threshold is ${BATTERY_THRESHOLD} miles. No need to charge.\n"
+  log "No need to charge.\n"
 
 fi # end if: check battery range and charging state
 
