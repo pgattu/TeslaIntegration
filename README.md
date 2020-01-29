@@ -10,7 +10,7 @@ You need a computer with Linux OS that's always on, such as a Raspberry Pi.
 
 The following Linux packages are required by this project.
 
-1. Install <a href="https://stedolan.github.io/jq/download/" target="_blank">**jq**</a>, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
+1. Install <a href="https://stedolan.github.io/jq" target="_blank">**jq**</a>, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install jq
 ```
@@ -81,30 +81,19 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 
 ```
 # Check whether Tesla needs to be charged every day at 9 am
-0 9 * * * /path/to/script/check_tesla_range.sh
+0 9 * * * /path/to/check_tesla_range.sh
 ```
 
-## Upgrading to the latest version
-You can verify the version of your program by opening it up in a text editor and checking the version number in the header.  Here's an example:
-
-```
-#!/bin/bash
-################################################################################
-# Author: Praveen Gattu
-# Created: 25-JAN-2020
-# **Version: 1.1**
-#
-# Description: This program connects to the Tesla car and checks its range in
-#              order to notify whether the car needs to be charged.
-```
-
-If a newer version is available and you wish to upgrade, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
+## Upgrading
+To upgrade to the latest version, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
 
 ```
 cd /path/to/TeslaIntegration
-git pull
+git fetch -all
+git reset --hard origin/master
 ```
 
+***Note*** *: The above commands will overwrite all your files.  That means, you have to configure the parameters again.*
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
