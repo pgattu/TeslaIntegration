@@ -28,7 +28,7 @@ sudo apt-get install python
 To install and setup the program, navigate to a directory where you want to install it and do the following:
 
 ```
-# Download the code from github
+# Download the code from github. The below command will create a new directory called "TeslaIntegration" and download the code to that directory.
 git clone https://github.com/pgattu/TeslaIntegration.git
 
 # Navigate to the newly-created directory
