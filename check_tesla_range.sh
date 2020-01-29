@@ -2,7 +2,7 @@
 ################################################################################
 # Author: Praveen Gattu
 # Created: 25-JAN-2020
-# Version: 1.11
+# Version: 1.1
 #
 # Description: This program connects to the Tesla car and checks its range in
 #              order to notify whether the car needs to be charged.

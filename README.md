@@ -98,10 +98,11 @@ You can verify the version of your program by opening it up in a text editor and
 #              order to notify whether the car needs to be charged.
 ```
 
-If a newer version is available and you wish to upgrade, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following command to upgrade your files:
+If a newer version is available and you wish to upgrade, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
 
 ```
-git
+cd /path/to/TeslaIntegration
+git pull
 ```
 
 
