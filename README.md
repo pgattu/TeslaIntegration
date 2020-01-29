@@ -8,7 +8,7 @@ This project includes the following integrations:
 ## Pre-Requisites
 The following Linux packages are required by the programs in this project.
 
-1. Install **jq**, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
+1. Install [**jq**](https://stedolan.github.io/jq/download/), a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install jq
 ```
