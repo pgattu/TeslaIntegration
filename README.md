@@ -10,7 +10,7 @@ You need a computer with Linux OS that's always on, such as a Raspberry Pi.
 
 The following Linux packages are required by this project.
 
-1. Install <a href="https://stedolan.github.io/jq" target="_blank">**jq**</a>, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
+1. Install [**jq**](https://stedolan.github.io/jq){:target="_blank"}, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install jq
 ```
@@ -93,7 +93,7 @@ git fetch -all
 git reset --hard origin/master
 ```
 
-***Note*** *: The above commands will overwrite all your files.  That means, you have to configure the parameters again.*
+***Note*** *: The above commands will overwrite all your files.  That means, you have to [configure parameters](https://github.com/pgattu/TeslaIntegration#configure-parameters) again.*
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
