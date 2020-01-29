@@ -10,7 +10,7 @@ You need a computer with Linux OS that's always on, such as a Raspberry Pi.
 
 The following Linux packages are required by this project.
 
-1. Install [**jq**](https://stedolan.github.io/jq/download/), a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
+1. Install <a href="https://stedolan.github.io/jq/download/" target="_blank">**jq**</a>, a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
 sudo apt-get install jq
 ```
@@ -46,7 +46,7 @@ mkdir logs tesla_json
 Your installation is complete.  You need to configure parameters before using the program.
 
 ## Configure Parameters
-Edit the file `check_tesla_range.sh` using your preferred text editor.
+Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters.
 
 - **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
 
