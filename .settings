@@ -1,3 +1,8 @@
+# This is the settings file for check_tesla_range.sh.  Configure the below
+# parameters.  Refer to the README file for further information about the
+# below parameters.
+#
+
 # The battery range (in miles), below which you want to be notified
 BATTERY_THRESHOLD=90
 
