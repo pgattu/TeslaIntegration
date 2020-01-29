@@ -15,7 +15,7 @@ The following Linux packages are required by this project.
 sudo apt-get install jq
 ```
 
-**-Mac Note-**-: If you are using a Mac, install brew first and then install jq.-
+***Mac Note-****: If you are using a Mac, install brew first and then install jq.*
 
 2. Install **python**.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
