@@ -84,6 +84,27 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 0 9 * * * /path/to/script/check_tesla_range.sh
 ```
 
+## Upgrading to the latest version
+You can verify the version of your program by opening it up in a text editor and checking the version number in the header.  Here's an example:
+
+```
+#!/bin/bash
+################################################################################
+# Author: Praveen Gattu
+# Created: 25-JAN-2020
+# **Version: 1.1**
+#
+# Description: This program connects to the Tesla car and checks its range in
+#              order to notify whether the car needs to be charged.
+```
+
+If a newer version is available and you wish to upgrade, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following command to upgrade your files:
+
+```
+git
+```
+
+
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
 - I believe that the programs would work in a Mac OS X terminal. I have not tested it though. If anyone of you test it, please report findings to me at pgattu@gmail.com.
