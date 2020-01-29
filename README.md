@@ -43,8 +43,9 @@ Your installation is complete.  You need to configure parameters before using th
 ## Configure Parameters
 Edit the file `check_tesla_range.sh` using your preferred text editor.
 
-- 
+- **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified.
 
+- (to be completed)
 
 ## Schedule the Job
 
