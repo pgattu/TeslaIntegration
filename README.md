@@ -64,7 +64,7 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 
 - **TESLA_USER**: Login email for your tesla.com account
 
-- **TESLA_PSWD**: Clear-text password for your tesla.com account
+- **TESLA_PSWD**: Password for your tesla.com account.  Password is saved on your computer within your network.  Communications between your computer and tesla.com are secured by HTTPS.
 
 - **SCRIPT_DIR**: Fully qualified path to the location of the script. For example:
 
