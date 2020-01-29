@@ -43,7 +43,7 @@ chmod +x *.sh
 Your installation is complete.  You need to configure parameters before using the program.
 
 ## Configure Parameters
-Edit the hidden file `.settings` using your preferred text editor to setup the following parameters.  This file cannot be seen using the `ls` command - use `ls -la` instead.
+Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters.
 
 - **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
 
@@ -69,6 +69,8 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 SCRIPT_DIR="/home/pi/TeslaIntegration"
 ```
 
+Your configuration is complete.  You need to schedule the job in order to receive regular notifications.
+
 ## Schedule the Job
 Schedule the job using cron to check for the battery range.  I recommend checking no more than a few times a day. I scheduled my checks to run twice a day.  Every time you check for battery range, the car is woken up to provide the data and that consumes battery power.
 
@@ -81,15 +83,12 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 0 9 * * * /path/to/TeslaIntegration/check_tesla_range.sh
 ```
 
-## Upgrading
+## Upgrade to Latest Version
 To upgrade to the latest version, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
 
 ```
 # Navigate to the TeslaIntegration directory
 cd /path/to/TeslaIntegration
-
-# Backup the settings file
-cp .settings .my_settings
 
 # Download the latest code from github. It will overwrite all the project files.
 git fetch --all
