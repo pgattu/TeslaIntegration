@@ -6,7 +6,9 @@ This project includes the following integrations:
 1. If the battery range is below the chosen number of miles and your car is not connected to a charger, get notified to charge the car via email, SMS or Alexa notifications.
 
 ## Pre-Requisites
-The following Linux packages are required by the programs in this project.
+You need a Linux-based computer that's always on, like a Raspberry Pi.
+
+The following Linux packages are required by this project.
 
 1. Install [**jq**](https://stedolan.github.io/jq/download/), a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
