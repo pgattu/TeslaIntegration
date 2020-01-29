@@ -15,7 +15,7 @@ The following Linux packages are required by this project.
 sudo apt-get install jq
 ```
 
-***Mac Note-****: If you are using a Mac, install brew first and then install jq.*
+***Note for Mac users****: You have to install HomeBrew first, and then install jq.*
 
 2. Install **python**.  Issue the following at your Raspberry Pi command prompt to install it.
 ```
@@ -47,13 +47,19 @@ Your installation is complete.  You need to configure parameters before using th
 ## Configure Parameters
 Edit the file `check_tesla_range.sh` using your preferred text editor.
 
-- **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger:
+- **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
 
 ```
 BATTERY_THRESHOLD="50"
 ```
 
-- **EMAIL_RECIPIENTS**: 
+- **EMAIL_RECIPIENTS**: Email addresses of the recipients for the notification.  For multiple recipients, separate email address with a comma.  If you would like a SMS notification on your cell phone, then enter the email address for your cell phone.  Use https://email2sms.info to find the email address for your cell phone.  For example, if you would like to receive a email notification and SMS notification, then enter:
+
+```
+EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
+```
+
+- **
 
 ## Schedule the Job
 
