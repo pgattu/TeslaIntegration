@@ -34,7 +34,7 @@ TESLA_USER=""
 TESLA_PSWD=""
 
 # Location of the directory where the script is stored.
-# Example: /home/pi/scripts/TeslaIntegration
+# Example: /home/pi/TeslaIntegration
 SCRIPT_DIR=""
 
 # STOP. DO NOT EDIT BELOW THIS LINE.
