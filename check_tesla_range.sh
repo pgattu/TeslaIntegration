@@ -37,8 +37,9 @@ TESLA_PSWD=""
 # Example: /home/pi/scripts/TeslaIntegration
 SCRIPT_DIR=""
 
+# STOP. DO NOT EDIT BELOW THIS LINE.
 
-# Variables (DO NOT EDIT BELOW THIS LINE)
+# Declare variables
 #
 JSON_DIR=${SCRIPT_DIR}/tesla_json
 LOG_DIR=${SCRIPT_DIR}/logs
@@ -149,7 +150,7 @@ function login() {
   get_access_data
 
   if [ "${ACCESS_TOKEN}" == 'null' -o "${ACCESS_TOKEN}" == "" ]; then
-    log "Login to Tesla failed. Check your Tesla login data and ${JSON_DIR}/login.out.\n" "ERROR"
+    log "Login to Tesla failed. Check your Tesla login data and ${JSON_DIR}/login.out\n" "ERROR"
   fi
 
 } # end function: login
