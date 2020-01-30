@@ -34,7 +34,7 @@ TESLA_USER=""
 TESLA_PSWD=""
 
 # Location of the directory where the script is stored.
-# Example: /home/pi/TeslaIntegration
+# Example: /home/pi/scripts/TeslaIntegration
 SCRIPT_DIR=""
 
 
@@ -60,6 +60,7 @@ LOGIN_REQUEST='{ "grant_type": "password",
 #
 function log() {
   MESSAGE=${1}
+  MESSAGE_TYPE=${2}
 
   # if log file does not exist, then create it.
   if [ ! -e ${LOG_FILE} ]; then
@@ -68,6 +69,12 @@ function log() {
 
   # append the message to the log file
   echo -e "[$(date '+%x %X')] ${MESSAGE}" >> ${LOG_FILE}
+
+  # if it's an error message, then print to screen and exit.
+  if [ "${MESSAGE_TYPE}" == "ERROR" ]; then
+    echo -e ${MESSAGE}
+    exit 1
+  fi
 }  # end function: log
 
 
@@ -141,6 +148,10 @@ function login() {
   # set the access variables
   get_access_data
 
+  if [ "${ACCESS_TOKEN}" == 'null' -o "${ACCESS_TOKEN}" == "" ]; then
+    log "Login to Tesla failed. Check the Tesla login credentials.\n" "ERROR"
+  fi
+
 } # end function: login
 
 ################################################################################
@@ -149,10 +160,10 @@ function login() {
 
 
 # Validate parameters
-if [ "${SCRIPT_DIR}" == "" -o ! -w ${SCRIPT_DIR} ]; then
-  echo -e "Script directory must be writable.\n"
+if [ "${SCRIPT_DIR}" == "" ] || [ ! -w ${SCRIPT_DIR} ]; then
+  echo -e "Script directory (${SCRIPT_DIR}) must be writable.\n"
   exit 1
-if [ "${BATTERY_THRESHOLD}" == "" ]; then
+elif [ "${BATTERY_THRESHOLD}" == "" ]; then
   echo -e "Battery range threshold is not set.  Using default value.\n"
   BATTERY_THRESHOLD=60
 elif [ "${TESLA_USER}" == "" ]; then
@@ -222,9 +233,7 @@ VEHICLES_RESPONSE=`curl --silent \
   ${TESLA_HOST}/api/1/vehicles`
 
 if [ "${VEHICLES_RESPONSE}" == "" ]; then
-  log "\nNo vehicle data is received.  Access token may be invalid. Exiting.\n"
-  echo "ERROR: No vehicle data is received."
-  exit 1
+  log "\nNo vehicle data is received.  Access token may be invalid. Exiting.\n" "ERROR"
 fi
 
 write_to_file "${VEHICLES_RESPONSE}" "${JSON_DIR}/vehicles.out" "json"
@@ -249,10 +258,7 @@ CHARGING_RESPONSE=`curl --silent --header "Authorization: Bearer $ACCESS_TOKEN"\
   --location ${TESLA_HOST}/api/1/vehicles/${TESLA_ID}/data_request/charge_state`
 
 if [ "${CHARGING_RESPONSE}" == "" ]; then
-  log "\nNo charging data is received. Access token or vehicle ID may \
-    be invalid. Exiting.\n"
-  echo "ERROR: No charging data is received. Exiting."
-  exit 1
+  log "\nNo charging data is received. Access token or vehicle ID may be invalid. Exiting.\n" "ERROR"
 fi
 
 write_to_file "${CHARGING_RESPONSE}" "${JSON_DIR}/charge.out" "json"
@@ -268,9 +274,7 @@ log "Charging State: ${CHARGING_STATE}\n"
 
 # check if battery range is retrieved
 if [ "${BATTERY_RANGE}" == 'null' -o "${BATTERY_RANGE}" == "" ]; then
-  log "Battery range could not be read. Exiting.\n"
-  echo -e "ERROR: Battery range could not be read. Exiting.\n"
-  exit 1
+  log "Battery range could not be read. Exiting.\n" "ERROR"
 fi
 
 
@@ -285,14 +289,22 @@ then
   if [ "${EMAIL_RECIPIENTS}" != "" ]; then
     # set the From email address
     if [ "${EMAIL_FROM}" != ""]; then
+      log "Set From email address to: ${EMAIL_FROM}"
       EMAIL_FROM="-aFrom:${EMAIL_FROM}"
+    else
+      log "There is not From email address. Using default."
     fi
 
+    log "Sending email to: ${EMAIL_RECIPIENTS}"
     mail -s "Tesla needs to be charged" ${EMAIL_FROM} ${EMAIL_RECIPIENTS} <<_EOF
 Tesla needs to be charged.  Battery range is ${BATTERY_RANGE} miles. Charger is not connected.
 
 (Battery range threshold is set to ${BATTERY_THRESHOLD} miles)
 _EOF
+
+  else
+    log "Email address is blank. No email will be sent.\n"
+
   fi # Email recipients is not blank
 
   # The following snippet of code is commented out.  It only applies to users
@@ -318,5 +330,5 @@ fi # end if: check battery range and charging state
 # Delete log files older than 15 days
 #
 log "Deleting log files older than 15 days..."
-find ${LOG_DIR} -type f -name 'chk_tesla_range*.log' -mtime +15 -exec rm {} \;
+find ${LOG_DIR} -type f -name 'tesla_range*.log' -mtime +15 -exec rm {} \;
 log "Completed.\n"
