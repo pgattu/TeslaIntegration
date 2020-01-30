@@ -149,7 +149,7 @@ function login() {
   get_access_data
 
   if [ "${ACCESS_TOKEN}" == 'null' -o "${ACCESS_TOKEN}" == "" ]; then
-    log "Login to Tesla failed. Check the Tesla login credentials.\n" "ERROR"
+    log "Login to Tesla failed. Check your Tesla login data and ${JSON_DIR}/login.out.\n" "ERROR"
   fi
 
 } # end function: login
