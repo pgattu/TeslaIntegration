@@ -149,7 +149,7 @@ function login() {
 
 
 # Validate parameters
-if [ ${SCRIPT_DIR} == "" -o ! -w ${SCRIPT_DIR} ]; then
+if [ "${SCRIPT_DIR}" == "" -o ! -w ${SCRIPT_DIR} ]; then
   echo -e "Script directory must be writable.\n"
   exit 1
 if [ "${BATTERY_THRESHOLD}" == "" ]; then
@@ -284,8 +284,8 @@ then
   # send an email if EMAIL_RECIPIENTS is not blank
   if [ "${EMAIL_RECIPIENTS}" != "" ]; then
     # set the From email address
-    if [ "${EMAIL_FROM} != ""]; then
-      EMAIL_FROM = "-aFrom:${EMAIL_FROM}"
+    if [ "${EMAIL_FROM}" != ""]; then
+      EMAIL_FROM="-aFrom:${EMAIL_FROM}"
     fi
 
     mail -s "Tesla needs to be charged" ${EMAIL_FROM} ${EMAIL_RECIPIENTS} <<_EOF
