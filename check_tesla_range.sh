@@ -2,7 +2,7 @@
 ################################################################################
 # Author: Praveen Gattu
 # Created: 25-JAN-2020
-# Version: 1.1
+# Version: 1.2
 #
 # Description: This program connects to the Tesla car and checks its range in
 #              order to notify whether the car needs to be charged.
@@ -329,6 +329,6 @@ fi # end if: check battery range and charging state
 
 # Delete log files older than 15 days
 #
-log "Deleting log files older than 15 days..."
-find ${LOG_DIR} -type f -name 'tesla_range*.log' -mtime +15 -exec rm {} \;
-log "Completed.\n"
+log "Deleting log files older than 30 days..."
+find ${LOG_DIR} -type f -name 'tesla_range*.log' -mtime +30 -exec rm {} \;
+log "End of execution.\n"
