@@ -16,23 +16,26 @@
 #
 
 # The battery range (in miles), below which you want to be notified
-BATTERY_THRESHOLD=90
+BATTERY_THRESHOLD="90"
 
 # Email receipients for the email notification.  Separate multiple recipients
 # using a comma.
-EMAIL_RECIPIENTS="your_email_1@gmail.com, your_phone_num@tmomail.net"
+# Example: "your_email_1@gmail.com, your_phone_num@tmomail.net"
+EMAIL_RECIPIENTS=""
 
 # The FROM address for the email notifications.
-EMAIL_FROM="Your Tesla <your_email@gmail.com>"
+# Example: "Your Tesla <your_email@gmail.com>"
+EMAIL_FROM=""
 
 # Login email for your tesla.com account
-TESLA_USER=tesla_login@gmail.com
+TESLA_USER=""
 
 # Login password for your tesla.com account
-TESLA_PSWD=tesla_pswd
+TESLA_PSWD=""
 
-# Location of the directory where the script is stored
-SCRIPT_DIR=/path/to/TeslaIntegration
+# Location of the directory where the script is stored.
+# Example: /home/pi/TeslaIntegration
+SCRIPT_DIR=""
 
 
 # Variables (DO NOT EDIT BELOW THIS LINE)
@@ -144,6 +147,7 @@ function login() {
 # End of functions.
 ################################################################################
 
+
 # Check whether the log directory exists.  If not, create it.
 if [ ! -d ${LOG_DIR} ]; then
   mkdir ${LOG_DIR}
@@ -158,6 +162,19 @@ fi
 
 
 log "==== Check Tesla Range ====\n"
+
+
+# Validate parameters
+if [ "${BATTERY_THRESHOLD}" == "" ]; then
+  log "Battery range threshold is not set.  Using default value.\n"
+  BATTERY_THRESHOLD=60
+elif [ "${TESLA_USER}" == "" ]; then
+  log "ERROR: Parameter TESLA_USER is required.\n"
+  exit 1
+elif [ "${TESLA_PSWD}" == "" ]; then
+  log "ERROR: Parameter TESLA_PSWD is required.\n"
+  exit 1
+fi
 
 
 # Check whether jq exists
@@ -261,12 +278,19 @@ if [ "${BATTERY_RANGE}" -lt "${BATTERY_THRESHOLD}" -a \
 then
   log "Tesla needs to be charged.\n" >> $LOG_FILE
 
-  # send an email
-  mail -s "Tesla needs to be charged" -a"From:${EMAIL_FROM}" ${EMAIL_RECIPIENTS} <<_EOF
+  # send an email if EMAIL_RECIPIENTS is not blank
+  if [ "${EMAIL_RECIPIENTS}" != "" ]; then
+    # set the From email address
+    if [ "${EMAIL_FROM} != ""]; then
+      EMAIL_FROM = "-aFrom:${EMAIL_FROM}"
+    fi
+
+    mail -s "Tesla needs to be charged" ${EMAIL_FROM} ${EMAIL_RECIPIENTS} <<_EOF
 Tesla needs to be charged.  Battery range is ${BATTERY_RANGE} miles. Charger is not connected.
 
 (Battery range threshold is set to ${BATTERY_THRESHOLD} miles)
 _EOF
+  fi # Email recipients is not blank
 
   # The following snippet of code is commented out.  It only applies to users
   # with a ISY home automation hub.
