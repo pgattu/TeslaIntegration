@@ -59,13 +59,13 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 
 - **EMAIL_FROM** (optional): The From address shown on the email notifications. If this is left blank, the default From address of your computer will be used. Syntax is `Name <me@email.com>`
 
-- **NOTIFY_ME_CODE** (optional): To receive notifications on your Alexa devices, enter the Notify Me Access Code. If this is left blank, then Alexa notification will not be sent. For instructions on how to use Notify Me to receive notifications on your Alexa, see https://github.com/pgattu/TeslaIntegration/wiki/Receive-notifications-on-Alexa-using-Notify-Me.
+- **NOTIFY_ME_CODE** (optional): To receive notifications on your Alexa devices, enter the Notify My Echo Access Code. If this is left blank, then Alexa notification will not be sent. For instructions on how to use Notify My Echo to receive notifications on your Alexa, see https://github.com/pgattu/TeslaIntegration/wiki/Alexa-Notification-using-Notify-My-Echo.
 
-- **TESLA_USER**: Login email for your tesla.com account
+- **TESLA_USER** (required): Login email for your tesla.com account
 
-- **TESLA_PSWD**: Password for your tesla.com account.  Password is saved on your computer within your network.  Communications between your computer and tesla.com are secured by HTTPS.
+- **TESLA_PSWD** (required): Password for your tesla.com account.  Password is saved on your computer within your network.  Communications between your computer and tesla.com are secured by HTTPS.
 
-- **SCRIPT_DIR**: Full path to the location of the TelsaIntegration folder. For example:
+- **SCRIPT_DIR** (required): Full path to the location of the TelsaIntegration folder. For example:
 
 ```
 SCRIPT_DIR="/home/pi/TeslaIntegration"

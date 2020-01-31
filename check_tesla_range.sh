@@ -53,6 +53,7 @@ LOGIN_REQUEST='{ "grant_type": "password",
   "client_secret": "c7257eb71a564034f9419ee651c7d0e5f7aa6bfbd18bafb5c5c033b093bb2fa3",
   "email": "'${TESLA_USER}'",
   "password": "'${TESLA_PSWD}'" }'
+NOTIFY_ME_URL="https://api.notifymyecho.com/v1/NotifyMe"
 
 ################################################################################
 # Reusable functions...
@@ -311,21 +312,21 @@ _EOF
 
   fi # Email recipients is not blank
 
-  # Send Alexa notification if Notify Me Access Code is not blank
+  # Send Alexa notification if Notify My Echo Access Code is not blank
   if [ "${NOTIFY_ME_CODE}" != "" ]; then
-    log "Sending notification to Notify Me.\n"
+    log "Sending notification to Notify My Echo.\n"
 
     NOTIFY_ME_REQUEST='{
-      "notification":"Your Tesla needs a charge.  Battery range is ${BATTERY_RANGE} miles.",
-      "accessCode":"'${NOTIFY_ME_CODE}'"
+      "notification": "Your Tesla needs a charge.  Battery range is ${BATTERY_RANGE} miles.",
+      "accessCode": "'${NOTIFY_ME_CODE}'"
     }'
 
     NOTIFY_ME_RESPONSE=`curl --silent --header "Content-Type: application/json"
       --data ${NOTIFY_ME_REQUEST} --location --request POST \
-      https://api.notifymyecho.com/v1/NotifyMe
+      ${NOTIFY_ME_URL}
 
   else
-    log "Notify Me Access Code is blank. No notification will be sent to Notify Me.\n"
+    log "Notify My Echo Access Code is blank. No notification will be sent to Notify My Echo.\n"
 
   fi # Notify Me Access Code is not blank
 
