@@ -45,19 +45,21 @@ Your installation is complete.  You need to configure parameters before using th
 ## Configure Parameters
 Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters.
 
-- **BATTERY_THRESHOLD**: The battery range (in miles), below whcih you should be notified. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
+- **BATTERY_THRESHOLD** (optional): The battery range (in miles), below whcih you should be notified. If no value is provided, then a default value will be used. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
 
 ```
 BATTERY_THRESHOLD="50"
 ```
 
-- **EMAIL_RECIPIENTS**: Email addresses of the recipients for the notification.  For multiple recipients, separate email address with a comma.  If you would like a SMS notification on your cell phone, then enter the email address for your cell phone.  Use https://email2sms.info to find the email address for your cell phone.  For example, if you would like to receive a email notification and SMS notification, then enter:
+- **EMAIL_RECIPIENTS** (optional): Email addresses of the recipients for the notification. If no email recipients are provided, then email will not be sent. For multiple recipients, separate email address with a comma.  If you would like a SMS notification on your cell phone, then enter the email address for your cell phone.  Use https://email2sms.info to find the email address for your cell phone.  For example, if you would like to receive a email notification and SMS notification, then enter:
 
 ```
 EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 ```
 
-- **EMAIL_FROM**: The from address shown on the email notifications.  Syntax is `Name <me@email.com>`
+- **EMAIL_FROM** (optional): The From address shown on the email notifications. If this is left blank, the default From address of your computer will be used. Syntax is `Name <me@email.com>`
+
+- **NOTIFY_ME_CODE** (optional): To receive notifications on your Alexa devices, enter the Notify Me Access Code. If this is left blank, then Alexa notification will not be sent. For instructions on how to use Notify Me to receive notifications on your Alexa, see https://github.com/pgattu/TeslaIntegration/wiki/Receive-notifications-on-Alexa-using-Notify-Me.
 
 - **TESLA_USER**: Login email for your tesla.com account
 

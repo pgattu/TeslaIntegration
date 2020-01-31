@@ -2,7 +2,7 @@
 ################################################################################
 # Author: Praveen Gattu
 # Created: 25-JAN-2020
-# Version: 1.2
+# Version: 1.3
 #
 # Description: This program connects to the Tesla car and checks its range in
 #              order to notify whether the car needs to be charged.
@@ -26,6 +26,9 @@ EMAIL_RECIPIENTS=""
 # The FROM address for the email notifications.
 # Example: "Your Tesla <your_email@gmail.com>"
 EMAIL_FROM=""
+
+# The access code for Notify Me for Alexa
+NOTIFY_ME_CODE=""
 
 # Login email for your tesla.com account
 TESLA_USER=""
@@ -290,7 +293,7 @@ then
   if [ "${EMAIL_RECIPIENTS}" != "" ]; then
     # set the From email address
     if [ "${EMAIL_FROM}" != ""]; then
-      log "Set From email address to: ${EMAIL_FROM}"
+      log "Set From email address to: ${EMAIL_FROM}. Sending email."
       EMAIL_FROM="-aFrom:${EMAIL_FROM}"
     else
       log "There is not From email address. Using default."
@@ -307,6 +310,24 @@ _EOF
     log "Email address is blank. No email will be sent.\n"
 
   fi # Email recipients is not blank
+
+  # Send Alexa notification if Notify Me Access Code is not blank
+  if [ "${NOTIFY_ME_CODE}" != "" ]; then
+    log "Sending notification to Notify Me.\n"
+
+    NOTIFY_ME_REQUEST='{
+      "notification":"Your Tesla needs a charge.  Battery range is ${BATTERY_RANGE} miles.",
+      "accessCode":"'${NOTIFY_ME_CODE}'"
+    }'
+
+    NOTIFY_ME_RESPONSE=`curl --silent --header "Content-Type: application/json"
+      --data ${NOTIFY_ME_REQUEST} --location --request POST \
+      https://api.notifymyecho.com/v1/NotifyMe
+
+  else
+    log "Notify Me Access Code is blank. No notification will be sent to Notify Me.\n"
+
+  fi # Notify Me Access Code is not blank
 
   # The following snippet of code is commented out.  It only applies to users
   # with a ISY home automation hub.
