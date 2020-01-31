@@ -69,7 +69,13 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 SCRIPT_DIR="/home/pi/TeslaIntegration"
 ```
 
-Your configuration is complete.  You need to schedule the job in order to receive regular notifications.
+Your configuration is complete.  Run a test to confirm that the program works.
+
+## Run a Test
+
+You can test the program by typing `./check_tesla_range.sh` at the command prompt.  You should not see any errors on your screen.  Also, check the log file located in the `logs` directory -- there shouldn't be any errors.  If there are errors, it could be because of missing pre-requisites or bad configuration.  If you cannot resolve the errors on your own, then create an issue at https://github.com/pgattu/TeslaIntegration/issues
+
+If there are no errors, then schedule the job in order to receive regular notifications.
 
 ## Schedule the Job
 Schedule the job using cron to check for the battery range.  I recommend checking no more than a few times a day. I scheduled my checks to run twice a day.  Every time you check for battery range, the car is woken up to provide the data and that consumes battery power.
