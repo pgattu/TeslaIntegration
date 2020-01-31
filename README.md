@@ -59,7 +59,7 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 
 - **EMAIL_FROM** (optional): The From address shown on the email notifications. If this is left blank, the default From address of your computer will be used. Syntax is `Name <me@email.com>`
 
-- **NOTIFY_ME_CODE** (optional): To receive notifications on your Alexa devices, enter the Notify My Echo Access Code. If this is left blank, then Alexa notification will not be sent. For instructions on how to use Notify My Echo to receive notifications on your Alexa, see https://github.com/pgattu/TeslaIntegration/wiki/Alexa-Notification-using-Notify-My-Echo.
+- **NOTIFY_ME_CODE** (optional): To receive notifications on your Alexa devices, enter the Notify My Echo Access Code. If this is left blank, then Alexa notification will not be sent. For instructions on how to use Notify My Echo to receive notifications on your Alexa, see https://github.com/pgattu/TeslaIntegration/wiki/Alexa-Notification-using-Notify-Me.
 
 - **TESLA_USER** (required): Login email for your tesla.com account
 
