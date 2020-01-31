@@ -22,7 +22,7 @@ sudo apt-get install jq
 sudo apt-get install python
 ```
 
-3. Your computer must be setup to send mail to any email address if you want to receive email notifications.
+3. Your computer must be setup to send emails if you want to receive email notifications.
 
 ## Installation
 To install and setup the program, navigate to a directory where you want to install it and do the following:
@@ -73,7 +73,7 @@ Your configuration is complete.  Run a test to confirm that the program works.
 
 ## Run a Test
 
-You can test the program by typing `./check_tesla_range.sh` at the command prompt.  You should not see any errors on your screen.  Also, check the log file located in the `logs` directory -- there shouldn't be any errors.  If there are errors, it could be because of missing pre-requisites or bad configuration.  If you cannot resolve the errors on your own, then create an issue at https://github.com/pgattu/TeslaIntegration/issues
+You can test the program by typing `./check_tesla_range.sh` at the command prompt.  You should not see any errors on your screen.  Also, check the log file located in the `logs` directory -- there shouldn't be any errors.  If there are errors, it could be because of missing pre-requisites or bad configuration.  If you cannot resolve the errors on your own, then create an issue at https://github.com/pgattu/TeslaIntegration/issues.
 
 If there are no errors, then schedule the job in order to receive regular notifications.
 
@@ -108,9 +108,3 @@ chmod +x *.sh
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
-- I believe that the programs would work in a Mac OS X terminal. I have not tested it though. If anyone of you test it, please report findings to me at pgattu@gmail.com.
-- Login information is not stored in an encrypted form yet.  However, the script is on your personal computer and you should have a firewall preventing hackers from getting into your computer. Note that all communications between the program and Tesla servers are secured by HTTPS protocol.
-
-
-## TO DO
-- Include link to instructions for setting up email.
