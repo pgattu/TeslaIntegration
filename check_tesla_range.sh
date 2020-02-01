@@ -44,8 +44,8 @@ SCRIPT_DIR=""
 
 # Declare variables
 #
-JSON_DIR=${SCRIPT_DIR}/tesla_json
 LOG_DIR=${SCRIPT_DIR}/logs
+OUT_DIR=${SCRIPT_DIR}/out
 LOG_FILE=${LOG_DIR}/tesla_range_$(date +%Y-%m-%d).log
 TESLA_HOST="https://owner-api.teslamotors.com"
 LOGIN_REQUEST='{ "grant_type": "password",
@@ -126,9 +126,9 @@ function write_to_file() {
 #
 function get_access_data() {
   # get data from the login file
-  ACCESS_TOKEN=$(get_json_value "access_token" "${JSON_DIR}/login.out")
-  local CREATED_AT=$(get_json_value "created_at" "${JSON_DIR}/login.out")
-  local EXPIRES_IN=$(get_json_value "expires_in" "${JSON_DIR}/login.out")
+  ACCESS_TOKEN=$(get_json_value "access_token" "${OUT_DIR}/login.out")
+  local CREATED_AT=$(get_json_value "created_at" "${OUT_DIR}/login.out")
+  local EXPIRES_IN=$(get_json_value "expires_in" "${OUT_DIR}/login.out")
 
   # calculate the expiry date based on created_at and expires_in
   EXPIRY_TS=$((CREATED_AT + EXPIRES_IN))
@@ -148,13 +148,13 @@ function login() {
     "Content-Type: application/json" --location --request POST \
     ${TESLA_HOST}/oauth/token`
 
-  write_to_file "${LOGIN_RESPONSE}" "${JSON_DIR}/login.out" "json"
+  write_to_file "${LOGIN_RESPONSE}" "${OUT_DIR}/login.out" "json"
 
   # set the access variables
   get_access_data
 
   if [ "${ACCESS_TOKEN}" == 'null' -o "${ACCESS_TOKEN}" == "" ]; then
-    log "Login to Tesla failed. Check your Tesla login data and ${JSON_DIR}/login.out\n" "ERROR"
+    log "Login to Tesla failed. Check your Tesla login data and ${OUT_DIR}/login.out\n" "ERROR"
   fi
 
 } # end function: login
@@ -187,8 +187,8 @@ if [ ! -d ${LOG_DIR} ]; then
 fi
 
 # Check whether the json directory exists.  If not, create it.
-if [ ! -d ${JSON_DIR} ]; then
-  mkdir ${JSON_DIR}
+if [ ! -d ${OUT_DIR} ]; then
+  mkdir ${OUT_DIR}
   log "Created json directory.\n"
 fi
 
@@ -205,7 +205,7 @@ log "==== Check Tesla Range ====\n"
 # get the access_token
 #
 log "Checking access_token in file..."
-if [ -e "${JSON_DIR}/login.out" ]; then
+if [ -e "${OUT_DIR}/login.out" ]; then
   CURRENT_DATE=$(date +%Y%m%d)
   get_access_data
 
@@ -241,8 +241,8 @@ if [ "${VEHICLES_RESPONSE}" == "" ]; then
   log "\nNo vehicle data is received.  Access token may be invalid. Exiting.\n" "ERROR"
 fi
 
-write_to_file "${VEHICLES_RESPONSE}" "${JSON_DIR}/vehicles.out" "json"
-TESLA_ID=$(get_json_value "response[0].id" "${JSON_DIR}/vehicles.out")
+write_to_file "${VEHICLES_RESPONSE}" "${OUT_DIR}/vehicles.out" "json"
+TESLA_ID=$(get_json_value "response[0].id" "${OUT_DIR}/vehicles.out")
 log "Vehicle ID: ${TESLA_ID}\n"
 
 
@@ -252,7 +252,7 @@ log "Wake up Tesla.\n"
 WAKE_RESPONSE=`curl --silent --header "Authorization: Bearer ${ACCESS_TOKEN}" \
   --location --request POST ${TESLA_HOST}/api/1/vehicles/${TESLA_ID}/wake_up`
 
-write_to_file "${WAKE_RESPONSE}" "${JSON_DIR}/wake_up.out" "json"
+write_to_file "${WAKE_RESPONSE}" "${OUT_DIR}/wake_up.out" "json"
 
 # sleep for a few seconds to allow the car to wake up
 sleep 5
@@ -266,11 +266,11 @@ if [ "${CHARGING_RESPONSE}" == "" ]; then
   log "\nNo charging data is received. Access token or vehicle ID may be invalid. Exiting.\n" "ERROR"
 fi
 
-write_to_file "${CHARGING_RESPONSE}" "${JSON_DIR}/charge.out" "json"
-BATTERY_RANGE=$(get_json_value "response.battery_range" "${JSON_DIR}/charge.out")
+write_to_file "${CHARGING_RESPONSE}" "${OUT_DIR}/charge.out" "json"
+BATTERY_RANGE=$(get_json_value "response.battery_range" "${OUT_DIR}/charge.out")
 # convert battery range from float (decimal number) to integer
 BATTERY_RANGE=${BATTERY_RANGE%.*}
-CHARGING_STATE=$(get_json_value "response.charging_state" "${JSON_DIR}/charge.out")
+CHARGING_STATE=$(get_json_value "response.charging_state" "${OUT_DIR}/charge.out")
 
 log "Battery Range Threshold: ${BATTERY_THRESHOLD} miles"
 log "Battery Range: ${BATTERY_RANGE} miles"
@@ -321,10 +321,10 @@ _EOF
       "accessCode": "'${NOTIFY_ME_CODE}'"
     }'
 
-    NOTIFY_ME_RESPONSE=`curl --silent --data ${NOTIFY_ME_REQUEST} \
+    NOTIFY_ME_RESPONSE=`curl --silent --data "${NOTIFY_ME_REQUEST}" \
       --header "Content-Type: application/json" --location --request POST \
       ${NOTIFY_ME_URL}`
-    write_to_file "${NOTIFY_ME_RESPONSE}" "${JSON_DIR}/notify_me.out" "json"
+    write_to_file "${NOTIFY_ME_RESPONSE}" "${OUT_DIR}/notify_me.out" "json"
 
   else
     log "Notify My Echo Access Code is blank. No notification will be sent to Notify My Echo.\n"
@@ -343,7 +343,7 @@ _EOF
   #
   # ISY_RESPONSE=`curl --silent --location --user ${ISY_USER}:${ISY_PSWD} \
   #  http://${ISY_HOSTNAME}/rest/vars/set/2/8/1`
-  # write_to_file "${ISY_RESPONSE}" "${JSON_DIR}/isy.out" "xml"
+  # write_to_file "${ISY_RESPONSE}" "${OUT_DIR}/isy.out" "xml"
 
 else
   log "No need to charge.\n"
