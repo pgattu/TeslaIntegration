@@ -2,6 +2,12 @@
 ## Contents
 - [Overview](#overview)
 - [Pre-Requisites](#pre-requisites)
+- [Installation](#installation)
+- [Configure Parameters](#configure-parameters)
+- [Run a Test](#run-a-test)
+- [Schedule the Job](#schedule-the-job)
+- [Upgrade](#upgrade)
+- [Known Limitation](#known-limitations)
 
 ## Overview
 Integrate Tesla car with your home.  The programs in this project are designed to run in a Bash shell environment on a Raspberry Pi.  In theory, they should run on any Linux OS or Mac OS X, but I have not tested them.
@@ -96,7 +102,7 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 0 9 * * * /path/to/TeslaIntegration/check_tesla_range.sh
 ```
 
-## Upgrade to Latest Version
+## Upgrade
 To upgrade to the latest version, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
 
 ```
