@@ -8,6 +8,7 @@
 - [Schedule the Job](#schedule-the-job)
 - [Upgrade](#upgrade)
 - [Known Limitation](#known-limitations)
+- [Contribute Code](#contribute)
 
 ## Overview
 Integrate Tesla car with your home.  The programs in this project are designed to run in a Bash shell environment on a Raspberry Pi.  In theory, they should run on any Linux OS or Mac OS X, but I have not tested them.
@@ -121,3 +122,6 @@ chmod +x *.sh
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
+
+## Contribute Code
+Please send an email to pgattu@gmail.com if you would like to contribute your effort to this project.
