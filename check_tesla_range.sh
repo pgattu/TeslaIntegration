@@ -301,7 +301,7 @@ then
     fi
 
     log "Sending email to: ${EMAIL_RECIPIENTS}"
-    mail -s "Tesla needs to be charged" ${EMAIL_FROM} ${EMAIL_RECIPIENTS} <<_EOF
+    mail -s "Tesla needs to be charged" "${EMAIL_FROM}" "${EMAIL_RECIPIENTS}" <<_EOF
 Tesla needs to be charged.  Battery range is ${BATTERY_RANGE} miles. Charger is not connected.
 
 (Battery range threshold is set to ${BATTERY_THRESHOLD} miles)
