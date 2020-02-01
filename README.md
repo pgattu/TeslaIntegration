@@ -11,11 +11,9 @@
 - [Contribute Code](#contribute-code)
 
 ## Overview
-Integrate Tesla car with your home.  The programs in this project are designed to run in a Bash shell environment on a Raspberry Pi.  In theory, they should run on any Linux OS or Mac OS X, but I have not tested them.
+Integrate your Tesla car with your home and life. If the battery range on your Tesla is low and it not connected to a charger, you can be notified via email, text message (SMS) or Alexa notifications.
 
-This project includes the following integrations:
-
-1. If the battery range is below the chosen number of miles and your car is not connected to a charger, get notified to charge the car via email, SMS or Alexa notifications.
+This program has been setup and tested to run on a Raspberry Pi. It should run on any Linux computer, including Macintosh. I recommend running it on a computer that's always on, so you can schedule it.
 
 ## Pre-Requisites
 You need a computer with Linux OS that's always on, such as a Raspberry Pi.
