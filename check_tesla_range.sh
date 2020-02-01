@@ -317,13 +317,14 @@ _EOF
     log "Sending notification to Notify My Echo.\n"
 
     NOTIFY_ME_REQUEST='{
-      "notification": "Your Tesla needs a charge.  Battery range is ${BATTERY_RANGE} miles.",
+      "notification": "Your Tesla needs a charge.  Battery range is "'${BATTERY_RANGE}'" miles.",
       "accessCode": "'${NOTIFY_ME_CODE}'"
     }'
 
     NOTIFY_ME_RESPONSE=`curl --silent --header "Content-Type: application/json"
       --data ${NOTIFY_ME_REQUEST} --location --request POST \
-      ${NOTIFY_ME_URL}
+      ${NOTIFY_ME_URL}`
+      write_to_file "${NOTIFY_ME_RESPONSE}" "${JSON_DIR}/notify_me.out" "json"
 
   else
     log "Notify My Echo Access Code is blank. No notification will be sent to Notify My Echo.\n"
