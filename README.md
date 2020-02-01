@@ -8,7 +8,7 @@
 - [Schedule the Job](#schedule-the-job)
 - [Upgrade](#upgrade)
 - [Known Limitation](#known-limitations)
-- [Contribute Code](#contribute)
+- [Contribute Code](#contribute-code)
 
 ## Overview
 Integrate Tesla car with your home.  The programs in this project are designed to run in a Bash shell environment on a Raspberry Pi.  In theory, they should run on any Linux OS or Mac OS X, but I have not tested them.
