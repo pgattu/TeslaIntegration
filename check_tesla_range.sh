@@ -321,10 +321,10 @@ _EOF
       "accessCode": "'${NOTIFY_ME_CODE}'"
     }'
 
-    NOTIFY_ME_RESPONSE=`curl --silent --header "Content-Type: application/json"
-      --data ${NOTIFY_ME_REQUEST} --location --request POST \
+    NOTIFY_ME_RESPONSE=`curl --silent --data ${NOTIFY_ME_REQUEST} \
+      --header "Content-Type: application/json" --location --request POST \
       ${NOTIFY_ME_URL}`
-      write_to_file "${NOTIFY_ME_RESPONSE}" "${JSON_DIR}/notify_me.out" "json"
+    write_to_file "${NOTIFY_ME_RESPONSE}" "${JSON_DIR}/notify_me.out" "json"
 
   else
     log "Notify My Echo Access Code is blank. No notification will be sent to Notify My Echo.\n"
