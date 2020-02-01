@@ -293,7 +293,7 @@ then
   # send an email if EMAIL_RECIPIENTS is not blank
   if [ "${EMAIL_RECIPIENTS}" != "" ]; then
     # set the From email address
-    if [ "${EMAIL_FROM}" != ""]; then
+    if [ "${EMAIL_FROM}" != "" ]; then
       log "Set From email address to: ${EMAIL_FROM}. Sending email."
       EMAIL_FROM="-aFrom:${EMAIL_FROM}"
     else
