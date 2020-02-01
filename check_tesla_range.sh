@@ -186,10 +186,10 @@ if [ ! -d ${LOG_DIR} ]; then
   log "Created log directory.\n"
 fi
 
-# Check whether the json directory exists.  If not, create it.
+# Check whether the output directory exists.  If not, create it.
 if [ ! -d ${OUT_DIR} ]; then
   mkdir ${OUT_DIR}
-  log "Created json directory.\n"
+  log "Created output directory.\n"
 fi
 
 
@@ -317,7 +317,7 @@ _EOF
     log "Sending notification to Notify My Echo.\n"
 
     NOTIFY_ME_REQUEST='{
-      "notification": "Your Tesla needs a charge.  Battery range is "'${BATTERY_RANGE}'" miles.",
+      "notification": "Your Tesla needs a charge.  Battery range is '${BATTERY_RANGE}' miles.",
       "accessCode": "'${NOTIFY_ME_CODE}'"
     }'
 
