@@ -294,7 +294,7 @@ then
   if [ "${EMAIL_RECIPIENTS}" != "" ]; then
     # set the From email address
     if [ "${EMAIL_FROM}" != "" ]; then
-      log "Set From email address to: ${EMAIL_FROM}. Sending email."
+      log "Set From email address to: ${EMAIL_FROM}."
       EMAIL_FROM="-aFrom:${EMAIL_FROM}"
     else
       log "There is not From email address. Using default."
