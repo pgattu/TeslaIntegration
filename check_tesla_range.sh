@@ -197,14 +197,14 @@ log "==== Check Tesla Range ====\n"
 
 
 # Check whether jq exists
-PACKAGE_RESPONSE=`jq --version`
+PACKAGE_RESPONSE=`jq --version 2>&1`
 if [ $? -ne 0 ]; then
   log "Required software 'jq' does not exist.\n" "ERROR"
 fi
 
 
 # Check whether python exists
-PACKAGE_RESPONSE=`python --version`
+PACKAGE_RESPONSE=`python --version 2>&1`
 if [ $? -ne 0 ]; then
   log "Required software 'python' does not exist.\n" "ERROR"
 fi
