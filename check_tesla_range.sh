@@ -197,9 +197,17 @@ log "==== Check Tesla Range ====\n"
 
 
 # Check whether jq exists
+PACKAGE_RESPONSE=`dpkg-query -l jq`
+if [ $? -ne 0 ]; then
+  log "Required software 'jq' does not exist.\n" "ERROR"
+fi
 
 
 # Check whether python exists
+PACKAGE_RESPONSE=`dpkg-query -l python`
+if [ $? -ne 0 ]; then
+  log "Required software 'python' does not exist.\n" "ERROR"
+fi
 
 
 # get the access_token
