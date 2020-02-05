@@ -143,9 +143,9 @@ git reset --hard origin/master
 chmod +x *.sh
 ```
 
-<hr></hr>
-
 ***Note*** *: The above commands will overwrite all your files.  That means, you have to [configure parameters](https://github.com/pgattu/TeslaIntegration#configure-parameters) again.*
+
+<hr></hr>
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
