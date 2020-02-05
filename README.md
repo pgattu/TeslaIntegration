@@ -48,7 +48,7 @@ sudo apt-get install python
 Email notifications are optional. However, if you want email or text message notifications, then your computer must be setup to send emails.
 
 ### 4. Alexa Notifications Setup
-Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at ___.
+Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at https://github.com/pgattu/TeslaIntegration/wiki/Alexa-Notification-using-Notify-Me.
 
 <hr></hr>
 
