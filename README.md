@@ -18,7 +18,7 @@ This software has been setup and tested to run on a Raspberry Pi. It should run 
 ## Pre-Requisites
 You need a computer with Linux OS that's always on, such as a Raspberry Pi. The following pre-requisites must be completed for successful installation and operation of the software.
 
-### [**jq**](https://stedolan.github.io/jq/download), a command-line JSON processor
+### 1. [**jq**](https://stedolan.github.io/jq/download), a command-line JSON processor
 
 Check whether jq is already installed on your computer by issuing the following at your command prompt.
 ```
@@ -32,7 +32,7 @@ sudo apt-get install jq
 
 ***Note for Mac users*** *: You have to install [**HomeBrew**](https://brew.sh/) first, and then install jq. Installation instructions for HomeBrew are available on HomeBrew's website.*
 
-### **python**
+### 1. **python**
 
 Check whether python is already installed on your computer by issuing the following at yur command prompt.
 ```
@@ -44,10 +44,10 @@ If python is not installed, then issue the following at your Raspberry Pi comman
 sudo apt-get install python
 ```
 
-### Email Notifications Setup
+### 1. Email Notifications Setup
 Email notifications are optional. However, if you want email or text message notifications, then your computer must be setup to send emails.
 
-### Alexa Notifications Setup
+### 1. Alexa Notifications Setup
 Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at ___.
 
 <hr></hr>
