@@ -71,7 +71,10 @@ chmod +x *.sh
 Your installation is complete.  You need to configure parameters before using the software.
 
 ## Configure Parameters
-Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters.
+Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters. For example:
+```
+nano check_tesla_range.sh
+```
 
 - **BATTERY_THRESHOLD** (optional): The battery range (in miles), below whcih you should be notified. If no value is provided, then a default value will be used. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
 
