@@ -65,7 +65,6 @@ cd TeslaIntegration
 
 # Change permissions to make the shell scripts executable
 chmod +x *.sh
-
 ```
 
 Your installation is complete.  You need to configure parameters before using the software.
@@ -77,13 +76,11 @@ nano check_tesla_range.sh
 ```
 
 - **BATTERY_THRESHOLD** (optional): The battery range (in miles), below whcih you should be notified. If no value is provided, then a default value will be used. For example, if you want to be notified when the car has less than 50 miles of range and it is not connected to a charger, then enter:
-
 ```
 BATTERY_THRESHOLD="50"
 ```
 
 - **EMAIL_RECIPIENTS** (optional): Email addresses of the recipients for the notification. If no email recipients are provided, then email will not be sent. For multiple recipients, separate email address with a comma.  If you would like a SMS notification on your cell phone, then enter the email address for your cell phone.  Use https://email2sms.info to find the email address for your cell phone.  For example, if you would like to receive a email notification and SMS notification, then enter:
-
 ```
 EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 ```
@@ -97,7 +94,6 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 - **TESLA_PSWD** (required): Password for your tesla.com account.  Password is saved on your computer within your network.  Communications between your computer and tesla.com are secured by HTTPS.
 
 - **SCRIPT_DIR** (required): Full path to the location of the TelsaIntegration folder. For example:
-
 ```
 SCRIPT_DIR="/home/pi/TeslaIntegration"
 ```
@@ -116,7 +112,6 @@ Schedule the job using cron to check for the battery range.  I recommend checkin
 If you have solar panels that power your home's electricity, it's a good idea to charge your car during the day when solar power is available.
 
 To add a cronjob, launch the crontab by typing `crontab -e` at the command prompt. To schedule the job to run at 9 am every day, add the following entry at the bottom of your file.  Save and close the crontab.
-
 ```
 # Check whether Tesla needs to be charged every day at 9 am
 0 9 * * * /path/to/TeslaIntegration/check_tesla_range.sh
@@ -124,7 +119,6 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 
 ## Upgrade
 To upgrade to the latest version, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
-
 ```
 # Navigate to the TeslaIntegration directory
 cd /path/to/TeslaIntegration
