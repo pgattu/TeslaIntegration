@@ -1,5 +1,5 @@
 # TeslaIntegration
-![TeslaIntegration](media/Tesla Battery Low Splash.png "TeslaIntegration")
+![TeslaIntegration](/media/Tesla Battery Low Splash.png)
 
 ## Contents
 - [Overview](#overview)
