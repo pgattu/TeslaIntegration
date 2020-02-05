@@ -305,7 +305,7 @@ then
       log "Set From email address to: ${EMAIL_FROM}."
       EMAIL_FROM="-aFrom:${EMAIL_FROM}"
     else
-      log "There is not From email address. Using default."
+      log "There is no From email address. Using default."
     fi
 
     log "Sending email to: ${EMAIL_RECIPIENTS}"
