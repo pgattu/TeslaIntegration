@@ -1,5 +1,5 @@
 # TeslaIntegration
-![TeslaIntegration](/media/Tesla Battery Low Splash.png)
+![TeslaIntegration](https://github.com/pgattu/TeslaIntegration/blob/master/media/Tesla%20Battery%20Low%20Splash.jpg?raw=true)
 
 ## Contents
 - [Overview](#overview)
