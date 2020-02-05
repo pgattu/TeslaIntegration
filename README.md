@@ -32,7 +32,7 @@ sudo apt-get install jq
 
 ***Note for Mac users*** *: You have to install [**HomeBrew**](https://brew.sh/) first, and then install jq. Installation instructions for HomeBrew are available on HomeBrew's website.*
 
-### 1. **python**
+### 2. **python**
 
 Check whether python is already installed on your computer by issuing the following at yur command prompt.
 ```
@@ -44,10 +44,10 @@ If python is not installed, then issue the following at your Raspberry Pi comman
 sudo apt-get install python
 ```
 
-### 1. Email Notifications Setup
+### 3. Email Notifications Setup
 Email notifications are optional. However, if you want email or text message notifications, then your computer must be setup to send emails.
 
-### 1. Alexa Notifications Setup
+### 4. Alexa Notifications Setup
 Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at ___.
 
 <hr></hr>
