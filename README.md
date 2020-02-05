@@ -51,6 +51,7 @@ Email notifications are optional. However, if you want email or text message not
 Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at ___.
 
 <hr></hr>
+
 ## Installation
 To install and setup the software, navigate to a directory where you want to install it and do the following:
 
