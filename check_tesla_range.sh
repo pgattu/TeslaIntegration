@@ -303,13 +303,13 @@ then
     # set the From email address
     if [ "${EMAIL_FROM}" != "" ]; then
       log "Set From email address to: ${EMAIL_FROM}."
-      EMAIL_FROM="-aFrom:${EMAIL_FROM}"
+      EMAIL_FROM="-a From:${EMAIL_FROM}"
     else
       log "There is no From email address. Using default."
     fi
 
     log "Sending email to: ${EMAIL_RECIPIENTS}"
-    mail -s "Tesla needs to be charged" "${EMAIL_FROM}" "${EMAIL_RECIPIENTS}" <<_EOF
+    mailx -s "Tesla needs to be charged" "${EMAIL_FROM}" "${EMAIL_RECIPIENTS}" <<_EOF
 Tesla needs to be charged.  Battery range is ${BATTERY_RANGE} miles. Charger is not connected.
 
 (Battery range threshold is set to ${BATTERY_THRESHOLD} miles)
