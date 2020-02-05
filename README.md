@@ -10,10 +10,14 @@
 - [Known Limitation](#known-limitations)
 - [Contribute Code](#contribute-code)
 
+<hr></hr>
+
 ## Overview
 Integrate your Tesla car with your home and life. If the battery range on your Tesla is low and it not connected to a charger, you can be notified via email, text message (SMS) or Alexa notifications.
 
 This software has been setup and tested to run on a Raspberry Pi. It should run on any Linux computer, including Macintosh. I recommend running it on a computer that's always on, so you can schedule it.
+
+<hr></hr>
 
 ## Pre-Requisites
 You need a computer with Linux OS that's always on, such as a Raspberry Pi. The following pre-requisites must be completed for successful installation and operation of the software.
@@ -69,6 +73,8 @@ chmod +x *.sh
 
 Your installation is complete.  You need to configure parameters before using the software.
 
+<hr></hr>
+
 ## Configure Parameters
 Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters. For example:
 ```
@@ -100,11 +106,15 @@ SCRIPT_DIR="/home/pi/TeslaIntegration"
 
 Your configuration is complete.  Run a test to confirm that the software works.
 
+<hr></hr>
+
 ## Run a Test
 
 You can test the software by typing `./check_tesla_range.sh` at the command prompt.  You should not see any errors on your screen.  Also, check the log file located in the `logs` directory -- there shouldn't be any errors.  If there are errors, it could be because of missing pre-requisites or bad configuration.  If you cannot resolve the errors on your own, then create an issue at https://github.com/pgattu/TeslaIntegration/issues.
 
 If there are no errors, then schedule the job in order to receive regular notifications.
+
+<hr></hr>
 
 ## Schedule the Job
 Schedule the job using cron to check for the battery range.  I recommend checking no more than a few times a day. I scheduled my checks to run twice a day.  Every time you check for battery range, the car is woken up to provide the data and that consumes battery power.
@@ -116,6 +126,8 @@ To add a cronjob, launch the crontab by typing `crontab -e` at the command promp
 # Check whether Tesla needs to be charged every day at 9 am
 0 9 * * * /path/to/TeslaIntegration/check_tesla_range.sh
 ```
+
+<hr></hr>
 
 ## Upgrade
 To upgrade to the latest version, navigate to the directory where you originally installed the TeslaIntegration programs.  Issue the following commands to upgrade your files:
@@ -131,10 +143,14 @@ git reset --hard origin/master
 chmod +x *.sh
 ```
 
+<hr></hr>
+
 ***Note*** *: The above commands will overwrite all your files.  That means, you have to [configure parameters](https://github.com/pgattu/TeslaIntegration#configure-parameters) again.*
 
 ## Known Limitations
 - Currently works with one Tesla car only.  If there is demand for checking more than one car, I will add it.  Send me a message at pgattu@gmail.com if you need this.
+
+<hr></hr>
 
 ## Contribute Code
 Please send an email to pgattu@gmail.com if you would like to contribute your effort to this project.
