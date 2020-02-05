@@ -1,4 +1,6 @@
 # TeslaIntegration
+![TeslaIntegration](media/Tesla Battery Low Splash.png "TeslaIntegration")
+
 ## Contents
 - [Overview](#overview)
 - [Pre-Requisites](#pre-requisites)
