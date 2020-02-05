@@ -13,29 +13,45 @@
 ## Overview
 Integrate your Tesla car with your home and life. If the battery range on your Tesla is low and it not connected to a charger, you can be notified via email, text message (SMS) or Alexa notifications.
 
-This program has been setup and tested to run on a Raspberry Pi. It should run on any Linux computer, including Macintosh. I recommend running it on a computer that's always on, so you can schedule it.
+This software has been setup and tested to run on a Raspberry Pi. It should run on any Linux computer, including Macintosh. I recommend running it on a computer that's always on, so you can schedule it.
 
 ## Pre-Requisites
-You need a computer with Linux OS that's always on, such as a Raspberry Pi.
+You need a computer with Linux OS that's always on, such as a Raspberry Pi. The following pre-requisites must be completed for successful installation and operation of the software.
 
-The following Linux packages are required by this project.
+### [**jq**](https://stedolan.github.io/jq/download), a command-line JSON processor
 
-1. Install [**jq**](https://stedolan.github.io/jq), a command-line JSON processor.  Issue the following at your Raspberry Pi command prompt to install it.
+Check whether jq is already installed on your computer by issuing the following at your command prompt.
+```
+jq --version
+```
+
+If jq is not installed, then issue the following at your Raspberry Pi command prompt to install it.  For installation on other operating systems, refer to jq's website.
 ```
 sudo apt-get install jq
 ```
 
-***Note for Mac users*** *: You have to install HomeBrew first, and then install jq.*
+***Note for Mac users*** *: You have to install [**HomeBrew**](https://brew.sh/) first, and then install jq. Installation instructions for HomeBrew are available on HomeBrew's website.*
 
-2. Install **python**.  Issue the following at your Raspberry Pi command prompt to install it.
+### [**python**]
+
+Check whether python is already installed on your computer by issuing the following at yur command prompt.
+```
+python --version
+```
+
+If python is not installed, then issue the following at your Raspberry Pi command prompt to install it.  For installation on other operating systems, refer to python's website.
 ```
 sudo apt-get install python
 ```
 
-3. Your computer must be setup to send emails if you want to receive email notifications.
+### Email Notifications Setup
+Email notifications are optional. However, if you want email or text message notifications, then your computer must be setup to send emails.
+
+### Alexa Notifications Setup
+Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at ___.
 
 ## Installation
-To install and setup the program, navigate to a directory where you want to install it and do the following:
+To install and setup the software, navigate to a directory where you want to install it and do the following:
 
 ```
 # Download the code from github. The below command will create a new directory
@@ -50,7 +66,7 @@ chmod +x *.sh
 
 ```
 
-Your installation is complete.  You need to configure parameters before using the program.
+Your installation is complete.  You need to configure parameters before using the software.
 
 ## Configure Parameters
 Edit the file `check_tesla_range.sh` using your preferred text editor to setup the following parameters.
@@ -81,11 +97,11 @@ EMAIL_RECIPIENTS="my_email@gmail.com, 3105551212@tmomail.net"
 SCRIPT_DIR="/home/pi/TeslaIntegration"
 ```
 
-Your configuration is complete.  Run a test to confirm that the program works.
+Your configuration is complete.  Run a test to confirm that the software works.
 
 ## Run a Test
 
-You can test the program by typing `./check_tesla_range.sh` at the command prompt.  You should not see any errors on your screen.  Also, check the log file located in the `logs` directory -- there shouldn't be any errors.  If there are errors, it could be because of missing pre-requisites or bad configuration.  If you cannot resolve the errors on your own, then create an issue at https://github.com/pgattu/TeslaIntegration/issues.
+You can test the software by typing `./check_tesla_range.sh` at the command prompt.  You should not see any errors on your screen.  Also, check the log file located in the `logs` directory -- there shouldn't be any errors.  If there are errors, it could be because of missing pre-requisites or bad configuration.  If you cannot resolve the errors on your own, then create an issue at https://github.com/pgattu/TeslaIntegration/issues.
 
 If there are no errors, then schedule the job in order to receive regular notifications.
 
