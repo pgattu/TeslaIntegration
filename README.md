@@ -32,7 +32,7 @@ sudo apt-get install jq
 
 ***Note for Mac users*** *: You have to install [**HomeBrew**](https://brew.sh/) first, and then install jq. Installation instructions for HomeBrew are available on HomeBrew's website.*
 
-### [**python**]
+### **python**
 
 Check whether python is already installed on your computer by issuing the following at yur command prompt.
 ```
@@ -50,6 +50,7 @@ Email notifications are optional. However, if you want email or text message not
 ### Alexa Notifications Setup
 Alexa notifications are optional. However, if you want Alexa notifications, then you must complete the setup steps at ___.
 
+<hr>
 ## Installation
 To install and setup the software, navigate to a directory where you want to install it and do the following:
 
