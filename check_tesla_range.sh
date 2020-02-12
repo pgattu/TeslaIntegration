@@ -132,7 +132,11 @@ function get_access_data() {
 
   # calculate the expiry date based on created_at and expires_in
   EXPIRY_TS=$((CREATED_AT + EXPIRES_IN))
-  EXPIRY_DATE=$(date -d @${EXPIRY_TS} +%Y%m%d)
+  # 11-Feb-2020: Changed the way Expiry Date is derived since the "date" command
+  # works on Raspberry Pi, but not on OS X, since OS X runs an older version of
+  # "date" command (and bash shell).
+  # EXPIRY_DATE=$(date -d @${EXPIRY_TS} +%Y%m%d)
+  EXPIRY_DATE=$(python -c "import datetime; x=datetime.datetime.fromtimestamp(${EXPIRY_TS}.strftime('%Y%m%d')); print x")
 
 } # end function: get_access_data
 
@@ -236,7 +240,7 @@ if [ "${ACCESS_TOKEN}" == "" ]; then
 fi
 
 log "Access Token: ${ACCESS_TOKEN}"
-log "Access Token Expires: $(date -d @${EXPIRY_TS} +%x)"
+log "Access Token Expires: ${EXPIRY_DATE}"
 
 
 # get vehicles
