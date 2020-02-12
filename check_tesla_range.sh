@@ -136,7 +136,7 @@ function get_access_data() {
   # works on Raspberry Pi, but not on OS X, since OS X runs an older version of
   # "date" command (and bash shell).
   # EXPIRY_DATE=$(date -d @${EXPIRY_TS} +%Y%m%d)
-  EXPIRY_DATE=$(python -c "import datetime; x=datetime.datetime.fromtimestamp(${EXPIRY_TS}).strftime('%Y%m%d'); print x")
+  EXPIRY_DATE=$(python -c "import datetime; x=datetime.datetime.fromtimestamp(${EXPIRY_TS}).strftime('%Y%m%d'); print (x)")
 
 } # end function: get_access_data
 
