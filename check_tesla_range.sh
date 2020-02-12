@@ -4,8 +4,11 @@
 # Created: 25-JAN-2020
 # Version: 1.4
 #
-# Description: This program connects to the Tesla car and checks its range in
-#              order to notify whether the car needs to be charged.
+# Description: This software connects to your Tesla car and checks its battery
+#              range (in miles). If the battery range is below the threshold
+#              you choose, then a notification can be sent to you via email,
+#              SMS text message, or Alexa notification. Refer to the README file
+#              for setup instructions.
 #
 # Pre-requisites: Install packages jq (command-line JSON processor), python
 #                 (sudo apt-get install jq python)
